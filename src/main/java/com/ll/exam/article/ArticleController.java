@@ -2,6 +2,7 @@ package com.ll.exam.article;
 
 import com.ll.exam.Rq;
 import com.ll.exam.article.dto.ArticleDto;
+import com.ll.exam.util.Ut;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -109,5 +110,13 @@ public class ArticleController {
 
         rq.setAttr("article", articleDto);
         rq.view("usr/article/modify");
+    }
+
+    public void getArticles(Rq rq) {
+        List<ArticleDto> articleDtos = articleService.findAll();
+
+        String jsonStr = Ut.json.toStr(articleDtos, "");
+
+        rq.println(jsonStr);
     }
 }
