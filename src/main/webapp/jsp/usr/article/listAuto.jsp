@@ -4,7 +4,7 @@
 <%@ include file="../common/head.jspf"%>
 
 <script>
-    let Articles__lastId;
+    let Articles__lastId = 0;
     function Articles__loadMore() {
         fetch(`/usr/article/getArticles/free?fromId=\${Articles__lastId}`)
             .then(data => data.json())
@@ -12,6 +12,7 @@
                 const articles = responseData.data;
                 for ( const index in articles ) {
                     const article = articles[index];
+
                     const html = `
                     <li class="flex">
                         <a class="w-[40px] hover:underline hover:text-[red]" href="/usr/article/detail/free/\${article.id}">\${article.id}</a>
@@ -20,12 +21,16 @@
                         <a class="hover:underline hover:text-[red]" href="/usr/article/modify/free/\${article.id}">수정</a>
                     </li>
                 `;
-                    $('.articles').append(html);
 
-                    if ( articles.length > 0 ) {
-                        Articles__lastId = articles[articles.length - 1].id;
-                    }
+                    $('.articles').append(html);
                 }
+
+                if ( articles.length > 0 ) {
+                    Articles__lastId = articles[articles.length - 1].id;
+                }
+
+                // Articles__loadMore(); // 즉시 실행
+                setTimeout(Articles__loadMore, 3000); // Articles__loadMore(); 를 3초 뒤에 수행
             });
     }
 </script>
@@ -40,7 +45,7 @@
 
         <hr class="mt-3 mb-3">
 
-        <button onclick="Articles__loadMore();" class="btn btn-outline btn-info btn-xs">불러오기</button>
+        <button class="btn btn-outline btn-info btn-xs" onclick="Articles__loadMore();">불러오기</button>
     </div>
 </section>
 

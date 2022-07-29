@@ -9,39 +9,14 @@
 
         <ul class="mt-5">
             <c:forEach items="${articles}" var="article">
-            <li class="flex">
-                <a class="w-[40px] hover:underline hover:text-[red]" href="/usr/article/detail/free/${article.id}">${article.id}</a>
-                <a class="flex-grow hover:underline hover:text-[red]" href="/usr/article/detail/free/${article.id}">${article.title}</a>
-                <a onclick="if ( !confirm('정말로 삭제하시겠습니까?') ) return false;"class="w-[100px] hover:underline hover:text-[red]" href="/usr/article/delete/free/${article.id}">삭제</a>
-                <a class="w-[100px] hover:underline hover:text-[red]" href="/usr/article/modify/free/${article.id}">수정</a>
-            </li>
+                <li class="flex">
+                    <a class="w-[40px] hover:underline hover:text-[red]" href="/usr/article/detail/free/${article.id}">${article.id}</a>
+                    <a class="flex-grow hover:underline hover:text-[red]" href="/usr/article/detail/free/${article.id}">${article.title}</a>
+                    <a onclick="if ( !confirm('정말로 삭제하시겠습니까?') ) return false;" class="hover:underline hover:text-[red] mr-2" href="/usr/article/delete/free/${article.id}?_method=DELETE">삭제</a>
+                    <a class="hover:underline hover:text-[red]" href="/usr/article/modify/free/${article.id}">수정</a>
+                </li>
             </c:forEach>
         </ul>
-    </div>
-</section>
-
-<section class="mt-5">
-    <div class="container px-3 mx-auto">
-        <script>
-            function Article__loadLatest() {
-                fetch('/usr/article/getArticles/free')
-                    .then(data => data.json()) // JSON을 파싱
-                    .then(responseData => {
-                        const articleList = responseData.data;
-                        const latestArticle = articleList[articleList.length - 1];
-                        const content = new Date() + " : " + latestArticle.title + "<br />";
-
-                        // $('.place-1').append(content); // 아래로 추가
-                        $('.place-1').prepend(content); // 위로 추가
-                        // $('.place-1').empty().prepend(content); // 기존 내용을 비우고 위로 추가
-                    });
-            }
-        </script>
-        <button onclick="Article__loadLatest();" class="btn btn-outline btn-info btn-xs">최신글 가져오기</button>
-
-        <div class="place-1 border-2 min-h-[500px]">
-
-        </div>
     </div>
 </section>
 
