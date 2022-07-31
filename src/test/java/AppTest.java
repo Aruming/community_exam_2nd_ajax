@@ -20,7 +20,7 @@ public class AppTest {
         assertThat(map.get("name")).isEqualTo("Paul");
     }
     @Test
-    void assdftJ_assertThat(){
+    void assertJ_assertThat(){
         int rs = 10+20;
         assertThat(rs).isEqualTo(30);
     }
