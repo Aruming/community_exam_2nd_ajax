@@ -36,4 +36,25 @@ public class ChatRepository {
     public List<ChatRoomDto> findAllRooms() {
         return datum;
     }
+
+    public ChatRoomDto findById(long id) {
+        for (ChatRoomDto chatRoomDto : datum) {
+            if (chatRoomDto.getId() == id) {
+                return chatRoomDto;
+            }
+        }
+
+        return null;
+    }
+
+    public void modifyRoom(long id, String title, String body) {
+        ChatRoomDto chatRoomDto = findById(id);
+
+        if ( chatRoomDto == null ) {
+            return;
+        }
+
+        chatRoomDto.setTitle(title);
+        chatRoomDto.setBody(body);
+    }
 }
