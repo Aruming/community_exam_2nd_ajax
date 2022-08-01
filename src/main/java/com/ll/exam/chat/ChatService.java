@@ -1,14 +1,17 @@
 package com.ll.exam.chat;
 
+import com.ll.exam.chat.dto.ChatMessageDto;
 import com.ll.exam.chat.dto.ChatRoomDto;
 
 import java.util.List;
 
 public class ChatService {
     private ChatRepository chatRepository;
+    private ChatMessageRepository chatMessageRepository;
 
     ChatService(){
         chatRepository = new ChatRepository();
+        chatMessageRepository = new ChatMessageRepository();
     }
 
     public long createRoom(String title, String body) {
@@ -29,5 +32,13 @@ public class ChatService {
 
     public void deleteRoom(long id) {
         chatRepository.deleteRoom(id);
+    }
+
+    public void writeMessage(long roomId, String body) {
+        chatMessageRepository.writeMessage(roomId, body);
+    }
+
+    public List<ChatMessageDto> findMessagesByRoomId(long id) {
+        return chatMessageRepository.findMessagesByRoomId(id);
     }
 }
