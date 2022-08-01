@@ -21,7 +21,7 @@ public class DispatchServlet extends HttpServlet {
         ArticleController articleController = new ArticleController();
         ChatController chatController = new ChatController();
 
-        switch (rq.getMethod()){
+        switch (rq.getRouteMethod()){
             case "GET":
                 switch (rq.getActionPath()) {
                     case "/usr/chat/modifyRoom":
@@ -46,10 +46,6 @@ public class DispatchServlet extends HttpServlet {
 
                     case "/usr/article/modify":
                         articleController.showModify(rq);
-                        break;
-
-                    case "/usr/article/delete":
-                        articleController.doDelete(rq);
                         break;
 
                     case "/usr/article/detail":
@@ -87,6 +83,17 @@ public class DispatchServlet extends HttpServlet {
                         break;
                 }
                 break;
+
+            case "DELETE":
+                switch (rq.getActionPath()) {
+                    case "/usr/chat/deleteRoom":
+                        chatController.deleteRoom(rq);
+                        break;
+
+                    case "/usr/article/delete":
+                        articleController.doDelete(rq);
+                        break;
+                }
         }
     }
 

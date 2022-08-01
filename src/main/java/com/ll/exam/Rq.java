@@ -103,7 +103,13 @@ public class Rq {
         return "/%s/%s/%s".formatted(bits[1], bits[2], bits[3]);
     }
 
-    public String getMethod() {
+    public String getRouteMethod() {
+        String method = getParam("_method", "");
+
+        if (method.length() > 0 ) {
+            return method.toUpperCase();
+        }
+
         return req.getMethod();
     }
 

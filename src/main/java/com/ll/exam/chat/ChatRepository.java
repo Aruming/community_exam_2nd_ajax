@@ -57,4 +57,14 @@ public class ChatRepository {
         chatRoomDto.setTitle(title);
         chatRoomDto.setBody(body);
     }
+
+    public void deleteRoom(long id) {
+        ChatRoomDto chatRoomDto = findById(id);
+
+        if ( chatRoomDto == null ) {
+            return;
+        }
+
+        datum.remove(chatRoomDto);
+    }
 }
