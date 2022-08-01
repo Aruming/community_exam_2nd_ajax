@@ -45,4 +45,12 @@ public class ChatService {
     public List<ChatMessageDto> findMessagesByRoomIdGreaterThan(long roomId, long fromId) {
         return chatMessageRepository.findMessagesByRoomIdGreaterThan(roomId, fromId);
     }
+
+    public ChatMessageDto findMessageById(long id) {
+        return chatMessageRepository.findMessageById(id);
+    }
+
+    public void deleteMessage(long id) {
+        chatMessageRepository.deleteMessage(id);
+    }
 }
