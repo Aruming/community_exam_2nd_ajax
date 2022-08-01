@@ -32,4 +32,8 @@ public class ChatRepository {
 
         return id;
     }
+
+    public List<ChatRoomDto> findAllRooms() {
+        return datum;
+    }
 }

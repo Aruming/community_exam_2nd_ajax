@@ -24,8 +24,12 @@ public class DispatchServlet extends HttpServlet {
         switch (rq.getMethod()){
             case "GET":
                 switch (rq.getActionPath()) {
+                    case "/usr/chat/roomList":
+                        chatController.showRoomList(rq);
+                        break;
+
                     case "/usr/chat/createRoom":
-                        chatController.createRoom(rq);
+                        chatController.showCreateRoom(rq);
                         break;
 
                     case "/usr/article/listAuto":
