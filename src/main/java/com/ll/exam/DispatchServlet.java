@@ -79,6 +79,10 @@ public class DispatchServlet extends HttpServlet {
                 break;
             case "POST":
                 switch (rq.getActionPath()) {
+                    case "/usr/chat/modifyMessageAjax":
+                        chatController.modifyMessageAjax(rq);
+                        break;
+
                     case "/usr/chat/writeMessageAjax":
                         chatController.writeMessageAjax(rq);
                         break;

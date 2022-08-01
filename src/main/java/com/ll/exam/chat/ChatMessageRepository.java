@@ -70,4 +70,13 @@ public class ChatMessageRepository {
 
         datum.remove(chatMessageDto);
     }
+
+    public void modifyMessage(long id, String body) {
+        ChatMessageDto chatMessageDto = findMessageById(id);
+        if(chatMessageDto == null){
+            return;
+        }
+
+        chatMessageDto.setBody(body);
+    }
 }
