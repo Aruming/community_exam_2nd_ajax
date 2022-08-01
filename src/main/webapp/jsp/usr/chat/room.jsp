@@ -96,7 +96,7 @@
                         <div class="flex">
                             <span>메세지 \${message.id} :</span>
                             &nbsp;
-                            <span>\${message.body}</span>
+                            <span class="message-list__message-body">\${message.body}</span>
                             &nbsp;
                             <a onclick="if ( confirm('정말로 삭제하시겠습니까?') ) ChatMessages__remove(\${message.id}, this); return false;" class="cursor-pointer hover:underline hover:text-[red] mr-2">삭제</a>
                         </div>
